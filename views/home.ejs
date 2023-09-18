@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    
+    <!-- <% const friendss=friends  %> -->
+    <% const string=str%>
+    <%- include('./partials/nav.ejs') %>
+    <fieldset>
+        <legend>Add Friend</legend>
+        <form action="/app/friends" method="post" enctype="multipart/form-data">
+            <label for="name" >Name</label>
+            <input type="text" id="name" name="name">
+            <label for="image" >Image</label>
+            <input type="file" id="image" name="file">
+            <label for="phone" >Phone</label>
+            <input type="number" id="phone" name="phone">
+            <label for="age" >Age</label>
+            <input type="text" id="age" name="age">
+            <button>Add</button>
+        </form>
+    </fieldset>
+    <div>
+        <h1>Friends List</h1>
+        <div class="container">
+            <% if(friends){%>
+                <% friends.forEach((x)=>{ %>
+                    <div class="card">
+                        <h3>Name: <%= x.name %></h3>
+                        <h3>Phone: <%=x.phone %></h3>
+                        <h3>Age: <%=x.age %></h3>
+                    </div>
+                <%}) %>
+            <%}%>
+        </div>
+    </div>
+</body>
+</html>
